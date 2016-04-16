@@ -12,14 +12,14 @@ layout: default
     			</h3>
 
           <p class="post-meta">
+            <span class="post-date">
+            {{ post.date | date: "%b %-d, %Y" }} 
+            </span> |
             {% if (post.categories.size > 0 %}
             <span class="categories">
             {{ post.categories | array_to_sentence_string }}
-            </span> |
-            {% endif %}
-            <span class="post-date">
-            {{ post.date | date: "%b %-d, %Y" }} 
             </span>
+            {% endif %}
           </p>          
     			    			
   				<p>
@@ -28,7 +28,7 @@ layout: default
   				<p>
   					<a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" title="{{ post.title}}">
   						Read More
-					</a>
+					  </a>
   				</p>
   			</div>
   		{% endfor %}
