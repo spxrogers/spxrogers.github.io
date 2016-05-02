@@ -8,6 +8,10 @@ Austinite (UT CS Class of 2016)
 
 Passionate software engineer and budding entrepreneur 
 
+
+
+feel free to say hi, and here's how ...
+
 ### Contact me
 
 Find me on [Twitter][Twitter] / [Github][github] ... or just say `hi` at [me (at) srogers (dot) net](mailto:me@srogers.net).
