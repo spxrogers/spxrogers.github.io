@@ -5,6 +5,11 @@ task :preview do
     sh "jekyll serve --watch --drafts --baseurl '' --config _config.yml,_config-dev.yml"
 end
 
+desc 'Run site'
+task :run do
+  sh "bundle exec jekyll serve"
+end
+
 desc 'Search site and print specific deprecation warnings'
 task :check do 
     sh "jekyll doctor"
