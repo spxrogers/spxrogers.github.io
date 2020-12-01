@@ -4,11 +4,9 @@ title: Hello? It me
 permalink: /about/
 ---
 
-Austinite (UT CS Class of 2016)
+NYC'er
 
-Passionate software engineer and budding entrepreneur 
-
-
+Passionate software engineer currently tinkering away 
 
 feel free to say hi, and here's how ...
 
