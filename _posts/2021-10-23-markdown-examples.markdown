@@ -7,6 +7,8 @@ categories:
 - blog
 ---
 
+Using this as a reference page to see how various markdown elements are rendered with the current CSS.
+
 :+1:
 
 # Heading 1
