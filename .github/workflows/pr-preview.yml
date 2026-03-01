@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Jekyll site
         if: github.event.action != 'closed'
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --baseurl "/pr-preview/pr-${{ github.event.pull_request.number }}"
 
       - uses: rossjrw/pr-preview-action@v1
         with:
