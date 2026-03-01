@@ -1,9 +1,9 @@
-# Builds and deploys the production site to gh-pages on push to main
+# Builds and deploys the production site to gh-pages on push to mainline
 name: Deploy site
 
 on:
   push:
-    branches: [main]
+    branches: [mainline]
 
 concurrency:
   group: pages-deploy
