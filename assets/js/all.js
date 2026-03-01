@@ -1,4 +1,1 @@
----
----
-
-{% include js/main.js %}
+// Site JavaScript
