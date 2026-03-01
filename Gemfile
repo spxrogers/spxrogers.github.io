@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'github-pages', group: :jekyll_plugins
-gem 'rake'
+gem 'jekyll', '~> 4.3'
+gem 'kramdown-parser-gfm'
 gem 'rouge'
+gem 'webrick'
