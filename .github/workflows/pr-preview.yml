@@ -1,3 +1,4 @@
+# Deploys a preview of the site for each pull request
 name: Deploy PR preview
 
 on:
