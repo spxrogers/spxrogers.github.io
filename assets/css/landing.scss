@@ -201,6 +201,19 @@ body {
   }
 }
 
+.coming-soon {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $text-muted;
+  border: 1px solid $border-light;
+  border-radius: 100px;
+  padding: 0.15rem 0.55rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
 .subsection__body {
   font-size: 0.95rem;
   line-height: 1.7;
