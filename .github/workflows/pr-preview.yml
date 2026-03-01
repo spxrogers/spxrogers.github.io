@@ -1,0 +1,29 @@
+# Deploys a preview of the site for each pull request
+name: Deploy PR preview
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event.action != 'closed'
+
+      - uses: ruby/setup-ruby@v1
+        if: github.event.action != 'closed'
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        if: github.event.action != 'closed'
+        run: bundle exec jekyll build --baseurl "/pr-preview/pr-${{ github.event.pull_request.number }}"
+
+      - uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./_site/

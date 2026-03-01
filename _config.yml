@@ -1,10 +1,10 @@
 # Harmony Jekyll theme general configurations 
 
 # Base URL
-baseurl: 
+baseurl: ""
 
 # Site live URL
-url: http://srogers.net
+url: https://srogers.net
 
 # Localhost 
 #url: http://127.0.0.1:4000  
@@ -12,14 +12,12 @@ url: http://srogers.net
 # Harmony theme configuration. Please change accordingly.
 harmony:
   name: Steven Rogers
-  # Little description about your site
-  description: intersection of work and passion
+  description: Steven Rogers - husband, father, builder, runner, blimp pilot, chef
   # 'meta_description:' Write an awesome description for your new site here.
   # It will appear in your document head meta (for Google search results) and 
   # in your feed.xml site description.
-  meta_description: > # 
-   The blog of Steven Rogers, including content of anything to everything.
-   Likely focus being tech and startup content.
+  meta_description: >
+   Steven Rogers - software engineer, family man, and collector of unlikely hobbies. Based in NYC.
   basetheme: theme-base-01 # pre defined thmes are darken, blue-water, redish.
   author: # Author details
     name: steven rogers
@@ -60,4 +58,4 @@ exclude:
 # Sass conversion configs
 sass:
     sass_dir: assets/css/_sass
-    style: :compressed
+    style: compressed

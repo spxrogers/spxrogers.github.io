@@ -1,39 +1,66 @@
 ---
-layout: default
+layout: landing
 ---
-<div id="home" class="page-content wc-container">
-	<div class="posts">
-  		{% for post in site.posts limit:10 %}
-  			<div class="post">
-    			<h3 class="post-title">
-			      <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
-			        {{ post.title }}
-			      </a>
-    			</h3>
+<div class="site">
+  <section class="hero">
+    <img src="{{ site.baseurl }}/static/img/photo.jpg" alt="Steven Rogers" class="hero__photo">
+    <h1 class="hero__name">Steven Rogers</h1>
+    <p class="hero__blurb">Software engineer, family man, and collector of unlikely hobbies. Based in NYC, working at the intersection of curiosity and craft.</p>
+  </section>
 
-          <p class="post-meta">
-            <span class="post-date">
-            {{ post.date | date: "%b %-d, %Y" }} 
-            </span> |
-            {% if (post.categories.size > 0 %}
-            <span class="categories">
-            {{ post.categories | array_to_sentence_string }}
-            </span>
-            {% endif %}
-          </p>          
-    			    			
-  				<p>
-	  				{{ post.excerpt }}	
-  				</p>
-  				<p>
-  					<a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" title="{{ post.title}}">
-  						Read More
-					  </a>
-  				</p>
-  			</div>
-  		{% endfor %}
-	</div>
-	<div class="post-footer">
-		<div class="column-full"><a href="{{ '/blog' | prepend: site.baseurl | prepend: site.url }}">Blog archive</a></div>
-	</div>
+  <nav class="roles" aria-label="Roles">
+    <button class="role-btn" data-role="husband">Husband</button>
+    <button class="role-btn" data-role="father">Father</button>
+    <button class="role-btn" data-role="builder">Builder</button>
+    <button class="role-btn" data-role="runner">Runner</button>
+    <button class="role-btn" data-role="blimp-pilot">Blimp Pilot</button>
+    <button class="role-btn" data-role="chef">Chef</button>
+  </nav>
+
+  <div class="subsections">
+    <div class="subsection" data-section="husband">
+      {% include roles/husband.html %}
+    </div>
+    <div class="subsection" data-section="father">
+      {% include roles/father.html %}
+    </div>
+    <div class="subsection" data-section="builder">
+      {% include roles/builder.html %}
+    </div>
+    <div class="subsection" data-section="runner">
+      {% include roles/runner.html %}
+    </div>
+    <div class="subsection" data-section="blimp-pilot">
+      {% include roles/blimp-pilot.html %}
+    </div>
+    <div class="subsection" data-section="chef">
+      {% include roles/chef.html %}
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p><a href="mailto:me@srogers.net">me@srogers.net</a></p>
+  </footer>
 </div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.role-btn');
+    var sections = document.querySelectorAll('.subsection');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var role = btn.getAttribute('data-role');
+        var wasActive = btn.classList.contains('is-active');
+
+        buttons.forEach(function (b) { b.classList.remove('is-active'); });
+        sections.forEach(function (s) { s.classList.remove('is-visible'); });
+
+        if (!wasActive) {
+          btn.classList.add('is-active');
+          document.querySelector('[data-section="' + role + '"]').classList.add('is-visible');
+        }
+      });
+    });
+  })();
+</script>

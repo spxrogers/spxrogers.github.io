@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
-require 'json'
-require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
-
-gem 'github-pages', versions['github-pages']
-gem 'rake'
-
+gem 'jekyll', '~> 4.3'
+gem 'jekyll-sass-converter', '~> 2.0'
+gem 'kramdown-parser-gfm'
 gem 'rouge'
+gem 'webrick'
