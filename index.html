@@ -67,14 +67,17 @@ layout: landing
       });
     });
 
-    // Snake corners: detect which buttons start/end each visual row
-    // and apply rounded ends so each wrapped row forms a connected pill strip
-    function updateSnakeCorners() {
+    // Snake layout: detect visual rows, round outer ends,
+    // and draw curved SVG connectors between consecutive rows
+    var container = document.querySelector('.roles');
+
+    function updateSnake() {
       buttons.forEach(function (b) {
         b.classList.remove('snake-left', 'snake-right');
       });
       if (buttons.length === 0) return;
 
+      // Group buttons into visual rows by offsetTop
       var rows = [];
       var currentRow = [buttons[0]];
       var currentTop = buttons[0].offsetTop;
@@ -90,13 +93,56 @@ layout: landing
       }
       rows.push(currentRow);
 
-      rows.forEach(function (row) {
+      // Round corners — skip the attachment edge where a connector joins
+      rows.forEach(function (row, idx) {
         row[0].classList.add('snake-left');
         row[row.length - 1].classList.add('snake-right');
       });
+
+      // Draw SVG connectors between consecutive rows
+      var svg = container.querySelector('.snake-svg');
+      if (!svg) {
+        svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', 'snake-svg');
+        container.appendChild(svg);
+      }
+      svg.setAttribute('width', container.offsetWidth);
+      svg.setAttribute('height', container.offsetHeight);
+      svg.innerHTML = '';
+
+      var cRect = container.getBoundingClientRect();
+
+      for (var r = 0; r < rows.length - 1; r++) {
+        var lastBtn = rows[r][rows[r].length - 1];
+        var firstBtn = rows[r + 1][0];
+        var lRect = lastBtn.getBoundingClientRect();
+        var fRect = firstBtn.getBoundingClientRect();
+
+        // Start: right edge of last button, vertically centered
+        var x1 = lRect.right - cRect.left;
+        var y1 = (lRect.top + lRect.bottom) / 2 - cRect.top;
+        // End: left edge of first button of next row, vertically centered
+        var x2 = fRect.left - cRect.left;
+        var y2 = (fRect.top + fRect.bottom) / 2 - cRect.top;
+
+        // Connector bulges to the right of the rightmost point
+        var xPeak = Math.max(x1, x2) + 24;
+
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d',
+          'M ' + x1 + ' ' + y1 +
+          ' C ' + xPeak + ' ' + y1 +
+          ', ' + xPeak + ' ' + y2 +
+          ', ' + x2 + ' ' + y2
+        );
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', '#e8e8e8');
+        path.setAttribute('stroke-width', '1.5');
+        svg.appendChild(path);
+      }
     }
 
-    updateSnakeCorners();
-    window.addEventListener('resize', updateSnakeCorners);
+    updateSnake();
+    window.addEventListener('resize', updateSnake);
   })();
 </script>
