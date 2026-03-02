@@ -66,5 +66,37 @@ layout: landing
         }
       });
     });
+
+    // Snake corners: detect which buttons start/end each visual row
+    // and apply rounded ends so each wrapped row forms a connected pill strip
+    function updateSnakeCorners() {
+      buttons.forEach(function (b) {
+        b.classList.remove('snake-left', 'snake-right');
+      });
+      if (buttons.length === 0) return;
+
+      var rows = [];
+      var currentRow = [buttons[0]];
+      var currentTop = buttons[0].offsetTop;
+
+      for (var i = 1; i < buttons.length; i++) {
+        if (Math.abs(buttons[i].offsetTop - currentTop) > 2) {
+          rows.push(currentRow);
+          currentRow = [buttons[i]];
+          currentTop = buttons[i].offsetTop;
+        } else {
+          currentRow.push(buttons[i]);
+        }
+      }
+      rows.push(currentRow);
+
+      rows.forEach(function (row) {
+        row[0].classList.add('snake-left');
+        row[row.length - 1].classList.add('snake-right');
+      });
+    }
+
+    updateSnakeCorners();
+    window.addEventListener('resize', updateSnakeCorners);
   })();
 </script>
