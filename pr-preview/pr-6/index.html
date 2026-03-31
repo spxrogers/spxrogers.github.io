@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Steven Rogers</title>
+    <meta name="description" content="Steven Rogers - software engineer, family man, and collector of unlikely hobbies. Based in NYC.">
+    <link rel="canonical" href="https://srogers.net/pr-preview/pr-6/">
+    <link rel="stylesheet" href="/pr-preview/pr-6/assets/css/landing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="site">
+  <section class="hero">
+    <img src="/pr-preview/pr-6/static/img/photo.jpg" alt="Steven Rogers" class="hero__photo">
+    <h1 class="hero__name">Steven Rogers</h1>
+    <p class="hero__blurb">Software engineer, family man, and collector of unlikely hobbies. Based in NYC, working at the intersection of curiosity and craft.</p>
+  </section>
+
+  <nav class="roles" aria-label="Roles">
+    <button class="role-btn" data-role="husband">Husband</button>
+    <button class="role-btn" data-role="father">Father</button>
+    <button class="role-btn" data-role="builder">Builder</button>
+    <button class="role-btn" data-role="sommelier">Sommelier</button>
+    <button class="role-btn" data-role="marathoner">Marathoner</button>
+    <button class="role-btn" data-role="blimp-pilot">Blimp Pilot</button>
+    <button class="role-btn" data-role="chef">Chef</button>
+  </nav>
+
+  <div class="subsections">
+    <div class="subsection" data-section="husband">
+      <h3 class="subsection__title">Husband</h3>
+<div class="subsection__body">
+  <p>Happily married and building a life together. Partnership, patience, and a shared sense of humor keep it all moving forward.</p>
+</div>
+
+    </div>
+    <div class="subsection" data-section="father">
+      <h3 class="subsection__title">Father</h3>
+<div class="subsection__body">
+  <p>The most rewarding and humbling role. Every day is a new lesson in patience, wonder, and showing up.</p>
+</div>
+
+    </div>
+    <div class="subsection" data-section="builder">
+      <h3 class="subsection__title">Builder</h3>
+<div class="subsection__body">
+  <p>Software engineer at heart. I love turning ideas into products &mdash; from architecture to deployment. Always tinkering, always shipping.</p>
+</div>
+
+    </div>
+    <div class="subsection" data-section="sommelier">
+      <h3 class="subsection__title">Sommelier</h3>
+<div class="subsection__body">
+  <p>Wine is as much about place, people, and memory as it is about the glass in front of you. I love exploring what makes a region tick and finding bottles that tell a real story.</p>
+</div>
+
+    </div>
+    <div class="subsection" data-section="marathoner">
+      <h3 class="subsection__title">Marathoner</h3>
+<div class="subsection__body">
+  <p>Lacing up and hitting the road is how I reset. Whether it's a quick morning run or a long weekend miles session, it keeps me grounded.</p>
+</div>
+
+    </div>
+    <div class="subsection" data-section="blimp-pilot">
+      <h3 class="subsection__title">Blimp Pilot <span class="coming-soon">coming soon</span></h3>
+<div class="subsection__body">
+  <p>Yes, really. There's nothing quite like navigating a lighter-than-air ship. It's slow, deliberate, and an entirely different way to see the world.</p>
+</div>
+
+    </div>
+    <div class="subsection" data-section="chef">
+      <h3 class="subsection__title">Chef <span class="coming-soon">coming soon</span></h3>
+<div class="subsection__body">
+  <p>Cooking is creative problem-solving with a delicious reward. I love experimenting in the kitchen &mdash; from weeknight dinners to weekend projects.</p>
+</div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p><a href="mailto:me@srogers.net">me@srogers.net</a></p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.role-btn');
+    var sections = document.querySelectorAll('.subsection');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var role = btn.getAttribute('data-role');
+        var wasActive = btn.classList.contains('is-active');
+
+        buttons.forEach(function (b) { b.classList.remove('is-active'); });
+        sections.forEach(function (s) { s.classList.remove('is-visible'); });
+
+        if (!wasActive) {
+          btn.classList.add('is-active');
+          document.querySelector('[data-section="' + role + '"]').classList.add('is-visible');
+        }
+      });
+    });
+  })();
+</script>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-64521528-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>
