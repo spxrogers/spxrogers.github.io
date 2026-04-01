@@ -4,7 +4,7 @@
 baseurl: ""
 
 # Site live URL
-url: https://srogers.net
+url: https://spxrogers.com
 
 # Localhost 
 #url: http://127.0.0.1:4000  
@@ -22,7 +22,7 @@ harmony:
   author: # Author details
     name: steven rogers
     email: me@srogers.net
-    url: srogers.net
+    url: spxrogers.com
 
   # Google Analytics key, leave blank to ignore
   google_analytics_key: UA-64521528-1

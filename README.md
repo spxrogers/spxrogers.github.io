@@ -1,5 +1,5 @@
 # spxrogers.github.io
-srogers.net
+spxrogers.com
 
 
 theme forked from [here](https://github.com/gayanvirajith/harmony).

@@ -2,7 +2,7 @@
 
 ## Project
 
-Personal website for Steven Rogers, hosted on GitHub Pages at srogers.net. Built with Jekyll 4.3.
+Personal website for Steven Rogers, hosted on GitHub Pages at spxrogers.com. Built with Jekyll 4.3.
 
 ## Tech Stack
 
@@ -32,6 +32,6 @@ make run    # jekyll serve (localhost:4000)
 
 ## Conventions
 
-- Site URL: `https://srogers.net`
+- Site URL: `https://spxrogers.com`
 - Permalinks: `pretty` (directory-style URLs)
 - Sass lives in `assets/css/_sass/`, compiled with compressed style
