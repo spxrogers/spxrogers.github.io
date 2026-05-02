@@ -17,12 +17,15 @@ jobs:
       - uses: ruby/setup-ruby@v1
         if: github.event.action != 'closed'
         with:
-          ruby-version: '3.2'
+          ruby-version: .ruby-version
           bundler-cache: true
+
+      - uses: extractions/setup-just@v2
+        if: github.event.action != 'closed'
 
       - name: Build Jekyll site
         if: github.event.action != 'closed'
-        run: bundle exec jekyll build --baseurl "/pr-preview/pr-${{ github.event.pull_request.number }}"
+        run: just build --baseurl "/pr-preview/pr-${{ github.event.pull_request.number }}"
 
       - uses: rossjrw/pr-preview-action@v1
         with:
