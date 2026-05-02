@@ -66,5 +66,102 @@ layout: landing
         }
       });
     });
+
+    // Snake layout: connect pills into a continuous tube shape
+    var container = document.querySelector('.roles');
+
+    function updateSnake() {
+      // Reset classes and SVG
+      buttons.forEach(function (b) {
+        b.classList.remove('snake-left', 'snake-right');
+      });
+      var oldSvg = container.querySelector('.snake-svg');
+      if (oldSvg) oldSvg.remove();
+      if (buttons.length === 0) return;
+
+      // Group buttons into visual rows by offsetTop
+      var rows = [];
+      var currentRow = [buttons[0]];
+      var currentTop = buttons[0].offsetTop;
+      for (var i = 1; i < buttons.length; i++) {
+        if (Math.abs(buttons[i].offsetTop - currentTop) > 2) {
+          rows.push(currentRow);
+          currentRow = [buttons[i]];
+          currentTop = buttons[i].offsetTop;
+        } else {
+          currentRow.push(buttons[i]);
+        }
+      }
+      rows.push(currentRow);
+
+      // Single row: round both ends, no connector needed
+      if (rows.length <= 1) {
+        rows[0][0].classList.add('snake-left');
+        rows[0][rows[0].length - 1].classList.add('snake-right');
+        return;
+      }
+
+      // Round free ends: first row left, last row right
+      rows[0][0].classList.add('snake-left');
+      rows[rows.length - 1][rows[rows.length - 1].length - 1].classList.add('snake-right');
+
+      // Create SVG for tube connectors (inserted first so buttons stack above)
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'snake-svg');
+      container.insertBefore(svg, container.firstChild);
+
+      var cRect = container.getBoundingClientRect();
+      var btnH = buttons[0].offsetHeight;
+      var half = btnH / 2;
+      svg.style.width = (container.offsetWidth + btnH * 2) + 'px';
+      svg.style.height = (container.offsetHeight + btnH) + 'px';
+
+      // Draw tube connector wrapping right → bottom → left
+      // Center line runs OUTSIDE button edges by half so inner wall aligns flush
+      for (var r = 0; r < rows.length - 1; r++) {
+        var topLast = rows[r][rows[r].length - 1];
+        var botFirst = rows[r + 1][0];
+        var topRect = topLast.getBoundingClientRect();
+        var botRect = botFirst.getBoundingClientRect();
+
+        var xR = topRect.right - cRect.left;
+        var y1 = topRect.top + topRect.height / 2 - cRect.top;
+        var xL = botRect.left - cRect.left;
+        var y2 = botRect.top + botRect.height / 2 - cRect.top;
+        var yMid = (y1 + y2) / 2;
+
+        // Start inside row1's last button, extend right (center at xR+half),
+        // down, left across bottom (center at yMid), down, into row2's first button
+        var d = 'M' + xR + ',' + y1 +
+                ' L' + (xR + half) + ',' + y1 +
+                ' L' + (xR + half) + ',' + yMid +
+                ' L' + (xL - half) + ',' + yMid +
+                ' L' + (xL - half) + ',' + y2 +
+                ' L' + xL + ',' + y2;
+
+        // Border path
+        var borderP = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        borderP.setAttribute('d', d);
+        borderP.setAttribute('fill', 'none');
+        borderP.setAttribute('stroke', '#e8e8e8');
+        borderP.setAttribute('stroke-width', btnH + 3);
+        borderP.setAttribute('stroke-linecap', 'butt');
+        borderP.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(borderP);
+
+        // Fill path
+        var fillP = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        fillP.setAttribute('d', d);
+        fillP.setAttribute('fill', 'none');
+        fillP.setAttribute('stroke', '#ffffff');
+        fillP.setAttribute('stroke-width', btnH);
+        fillP.setAttribute('stroke-linecap', 'butt');
+        fillP.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(fillP);
+      }
+    }
+
+    updateSnake();
+    window.addEventListener('resize', updateSnake);
   })();
 </script>
