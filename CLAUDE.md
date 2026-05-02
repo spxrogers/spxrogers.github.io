@@ -16,9 +16,9 @@ Personal website for Steven Rogers, hosted on GitHub Pages at spxrogers.com. Bui
 Ruby is managed via **rbenv**. A `.ruby-version` file is already set up.
 
 ```bash
-make deps   # bundle install
-make build  # jekyll build
-make run    # jekyll serve (localhost:4000)
+just install   # bundle install
+just build  # jekyll build
+just run    # jekyll serve (localhost:4000)
 ```
 
 ## Project Structure

@@ -17,11 +17,13 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: .ruby-version
           bundler-cache: true
 
+      - uses: extractions/setup-just@v2
+
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: just build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
