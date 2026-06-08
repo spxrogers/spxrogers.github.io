@@ -3,7 +3,7 @@ name: Deploy site
 
 on:
   push:
-    branches: [mainline]
+    branches: [main]
 
 concurrency:
   group: pages-deploy
