@@ -10,6 +10,7 @@
 // --------------------------------
 
 $font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$serif-stack: 'Fraunces', Georgia, 'Times New Roman', serif;
 $text-primary: #1a1a2e;
 $text-secondary: #555;
 $text-muted: #888;
@@ -90,14 +91,15 @@ body {
 }
 
 .hero__name {
-  font-size: 1.75rem;
-  font-weight: 600;
+  font-family: $serif-stack;
+  font-size: 2rem;
+  font-weight: 500;
   margin: 0 0 0.5rem;
   color: $text-primary;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 
   @include MQ(M) {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
   }
 }
 
@@ -112,6 +114,17 @@ body {
   @include MQ(M) {
     font-size: 1.15rem;
   }
+}
+
+.hero__code {
+  font-family: 'SFMono-Regular', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.85em;
+  font-weight: 400;
+  color: $accent;
+  background: $accent-light;
+  border: 1px solid rgba(58, 90, 140, 0.15);
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
 }
 
 // --------------------------------
