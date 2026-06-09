@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Builder Showcase — UX Prototypes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .hub-head { text-align: center; margin-bottom: 2.5rem; }
+    .hub-head h1 { font-family: var(--serif-stack); font-weight: 500; font-size: 1.9rem; margin: 0 0 0.5rem; }
+    .hub-head p { color: var(--text-secondary); max-width: 460px; margin: 0 auto; font-weight: 300; }
+    .hub-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 620px) { .hub-grid { grid-template-columns: 1fr 1fr; } }
+    .hub-card {
+      display: block; text-decoration: none; color: inherit;
+      border: 1px solid var(--border-light); border-radius: var(--radius);
+      background: var(--bg-card); padding: 1.3rem; box-shadow: var(--shadow-sm);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .hub-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+    .hub-card__n { font-family: var(--mono-stack); font-size: 0.72rem; color: var(--accent); }
+    .hub-card__title { font-weight: 600; font-size: 1.05rem; margin: 0.3rem 0 0.4rem; }
+    .hub-card__desc { font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 0.7rem; line-height: 1.55; }
+    .hub-card__meta { font-size: 0.75rem; color: var(--text-muted); }
+    .hub-card__meta b { color: var(--text-secondary); font-weight: 600; }
+    .hub-note {
+      margin-top: 2.5rem; padding: 1rem 1.2rem; border-radius: var(--radius);
+      background: var(--accent-light); border: 1px solid rgba(58,90,140,0.15);
+      font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <div class="hub-head">
+      <h1>builder &rarr; showcase</h1>
+      <p>Four UX directions for turning the <code class="hero__code">builder</code> role into a showcase of past projects. Each opens as a full, clickable page that feels like the live site.</p>
+    </div>
+
+    <div class="hub-grid">
+      <a class="hub-card" href="option-1-cards.html">
+        <div class="hub-card__n">Option 1</div>
+        <div class="hub-card__title">Project cards</div>
+        <p class="hub-card__desc">A responsive grid of cards — name, blurb, tech tags, link-out. Visual and scannable; the most "portfolio" feeling.</p>
+        <div class="hub-card__meta"><b>Best when:</b> projects have logos/links and you want them to pop.</div>
+      </a>
+
+      <a class="hub-card" href="option-2-timeline.html">
+        <div class="hub-card__n">Option 2</div>
+        <div class="hub-card__title">Timeline</div>
+        <p class="hub-card__desc">A chronological vertical trail. Leans into the "more ideas than time" narrative and shows momentum over the years.</p>
+        <div class="hub-card__meta"><b>Best when:</b> the story / progression matters more than visuals.</div>
+      </a>
+
+      <a class="hub-card" href="option-3-accordion.html">
+        <div class="hub-card__n">Option 3</div>
+        <div class="hub-card__title">Expandable list</div>
+        <p class="hub-card__desc">Compact list of names + years; click to reveal detail. Keeps the card tidy even with lots of projects.</p>
+        <div class="hub-card__meta"><b>Best when:</b> you have many projects and want a low-scroll default.</div>
+      </a>
+
+      <a class="hub-card" href="option-4-featured.html">
+        <div class="hub-card__n">Option 4</div>
+        <div class="hub-card__title">Featured + sub-tabs</div>
+        <p class="hub-card__desc">A "gist / projects" toggle keeps the current blurb, plus one highlighted "now building" feature over a tidy list of the rest.</p>
+        <div class="hub-card__meta"><b>Best when:</b> you want to keep the intro AND spotlight one thing.</div>
+      </a>
+    </div>
+
+    <div class="hub-note">
+      <strong>Note:</strong> projects (Cellar, PaceMaker, Toast…) are placeholders to show the layout — swap in your real ones. All four reuse the live site's design tokens (Inter / Fraunces, the <code class="hero__code">#3a5a8c</code> accent, card styling) so the chosen direction can drop straight into <code class="hero__code">_includes/roles/builder.html</code>. Content could later move to a <code class="hero__code">_data/projects.yml</code> file so adding a project is a few lines of YAML.
+    </div>
+
+    <footer class="site-footer">
+      <p>prototypes · spxrogers.com</p>
+    </footer>
+  </div>
+</body>
+</html>

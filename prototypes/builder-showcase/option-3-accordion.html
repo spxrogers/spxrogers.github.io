@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Builder Showcase — Option 3: Expandable List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <style>
+    /* ---- Option 3: compact expandable list (accordion) ---- */
+    .proj-list { border-top: 1px solid var(--border-light); }
+    .proj-row { border-bottom: 1px solid var(--border-light); }
+    .proj-row__btn {
+      width: 100%; appearance: none; background: none; border: none;
+      cursor: pointer; text-align: left; font-family: var(--font-stack);
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.85rem 0.25rem; color: var(--text-primary);
+    }
+    .proj-row__btn:hover .proj-row__name { color: var(--accent); }
+    .proj-row__name { font-weight: 600; font-size: 0.98rem; flex: 1; transition: color 0.15s ease; }
+    .proj-row__year { font-family: var(--mono-stack); font-size: 0.72rem; color: var(--text-muted); }
+    .proj-row__chev {
+      color: var(--text-muted); transition: transform 0.25s ease; flex-shrink: 0;
+    }
+    .proj-row.is-open .proj-row__chev { transform: rotate(90deg); color: var(--accent); }
+    .proj-row__panel {
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .proj-row.is-open .proj-row__panel { max-height: 240px; }
+    .proj-row__panel-inner { padding: 0 0.25rem 1rem; }
+    .proj-row__desc { font-size: 0.87rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
+    .proj-row__link {
+      display: inline-block; margin-top: 0.6rem; font-size: 0.8rem; font-weight: 500;
+      color: var(--accent); text-decoration: none;
+    }
+    .proj-row__link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="proto-banner">
+    <span class="proto-tag">Prototype 3 / 4</span>
+    <strong>Expandable list</strong>
+    <span>· compact by default, click a project to reveal detail</span>
+    <a href="index.html">← back to all options</a>
+  </div>
+
+  <div class="site">
+    <section class="hero">
+      <img src="../../static/img/photo.jpg" alt="Steven Rogers" class="hero__photo" onerror="this.style.visibility='hidden'">
+      <h1 class="hero__name">Steven Rogers</h1>
+      <p class="hero__blurb">husband + dad, <s>software engineering</s> <code class="hero__code">builder</code>, unrelated wacky hobbies, and working on the intersection of code &amp; craft.</p>
+    </section>
+
+    <nav class="roles" aria-label="Roles">
+      <button class="role-btn">husband + dad</button>
+      <button class="role-btn is-active">builder</button>
+      <button class="role-btn">sommelier</button>
+      <button class="role-btn">marathoner</button>
+      <button class="role-btn">blimp pilot</button>
+      <button class="role-btn">chef</button>
+    </nav>
+
+    <div class="subsections">
+      <div class="subsection">
+        <h3 class="subsection__title">builder</h3>
+        <div class="subsection__body">
+          <div class="builder-intro">
+            <p>software engineer by trade, but a builder at heart. historically; more ideas than time. now; the same 😅 but agentic tools sure has closed the gap. tap any project to dig in:</p>
+          </div>
+
+          <p class="showcase-label">projects</p>
+
+          <div class="proj-list">
+            <div class="proj-row is-open">
+              <button class="proj-row__btn" type="button">
+                <span class="proj-row__name">spxrogers.com</span>
+                <span class="proj-row__year">2024</span>
+                <svg class="proj-row__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              <div class="proj-row__panel">
+                <div class="proj-row__panel-inner">
+                  <p class="proj-row__desc">This very site — a Jekyll build with a role-switching homepage, compiled Sass, and GitHub Pages hosting. A small playground for the intersection of code &amp; craft.</p>
+                  <div class="tag-row"><span class="tag">Jekyll</span><span class="tag">Sass</span></div>
+                  <a class="proj-row__link" href="#">View project →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-row">
+              <button class="proj-row__btn" type="button">
+                <span class="proj-row__name">Cellar</span>
+                <span class="proj-row__year">2023</span>
+                <svg class="proj-row__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              <div class="proj-row__panel">
+                <div class="proj-row__panel-inner">
+                  <p class="proj-row__desc">A wine cellar tracker — tasting notes, drink-by windows, and a "what should I open tonight?" picker.</p>
+                  <div class="tag-row"><span class="tag">SwiftUI</span><span class="tag">CloudKit</span></div>
+                  <a class="proj-row__link" href="#">View project →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-row">
+              <button class="proj-row__btn" type="button">
+                <span class="proj-row__name">PaceMaker</span>
+                <span class="proj-row__year">2022</span>
+                <svg class="proj-row__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              <div class="proj-row__panel">
+                <div class="proj-row__panel-inner">
+                  <p class="proj-row__desc">Marathon training plan generator that adapts weekly mileage to your goal time and race date.</p>
+                  <div class="tag-row"><span class="tag">Python</span><span class="tag">React</span></div>
+                  <a class="proj-row__link" href="#">View project →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-row">
+              <button class="proj-row__btn" type="button">
+                <span class="proj-row__name">Toast</span>
+                <span class="proj-row__year">2021</span>
+                <svg class="proj-row__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              <div class="proj-row__panel">
+                <div class="proj-row__panel-inner">
+                  <p class="proj-row__desc">A tiny menubar clipboard-history utility built to scratch my own itch.</p>
+                  <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">Electron</span></div>
+                  <a class="proj-row__link" href="#">View project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>me@srogers.net</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.proj-row__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.closest('.proj-row').classList.toggle('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
