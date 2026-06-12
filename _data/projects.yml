@@ -37,3 +37,8 @@
   description: "A rotten tomatoes adjacent web tool that focuses on age appropriate children programming. because who knew modern day television is often actively harmful for development? 🤡"
   tags: [node, grpc, serverless, vercel, postgres]
   url: https://calmkidstv.com
+
+- name: Swift OSS iOS Libraries
+  year: 2016
+  description: "<a href='https://github.com/spxrogers/Moya-Gloss' target='_blank' rel='noopener'>spxrogers/Moya-Gloss</a> and <a href='https://github.com/spxrogers/Alamofire-Gloss' target='_blank' rel='noopener'>spxrogers/Alamofire-Gloss</a> &mdash; two libraries adding serialization and deserialization bindings to strongly type your Swift async boundaries."
+  tags: [swift, iOS, reactive programming, alamofire]

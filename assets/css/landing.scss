@@ -393,6 +393,17 @@ a.project-card:hover {
     border-radius: 4px;
     padding: 0.05em 0.35em;
   }
+
+  a {
+    color: $accent;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(58, 90, 140, 0.3);
+    transition: border-color 0.18s ease;
+
+    &:hover {
+      border-bottom-color: $accent;
+    }
+  }
 }
 
 .project-card__tags {
