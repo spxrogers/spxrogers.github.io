@@ -1,32 +1,33 @@
 # Projects shown in the "builder" role on the homepage.
-# Order top-to-bottom = order shown. Newest first reads best.
+# Order top-to-bottom = order shown.
 #
 # Fields:
 #   name        (required) project title
 #   year        (optional) shown top-right of the card
-#   description (required) one or two lines
+#   description (required) one or two lines (inline HTML allowed, e.g. <strong>)
 #   tags        (optional) list of tech / keywords -> pills
 #   url         (optional) if present the card links out; external URLs open in a new tab
-#
-# TODO: these are placeholders from the prototype — replace with real projects.
 
-- name: spxrogers.com
-  year: 2024
-  description: This very site — a Jekyll build with a role-switching homepage, on GitHub Pages.
-  tags: [Jekyll, Sass]
-  url: https://github.com/spxrogers/spxrogers.github.io
+- name: agentsync
+  year: 2026
+  description: "CLI utility to define agentic harness (Claude Code, Codex, Cursor, and more!) skills, MCPs, memories, and configuration <strong>once</strong> and apply to all relevant-to-you tools."
+  tags: [golang, cli, homebrew, ai]
+  url: https://agentsync.cc
 
-- name: Cellar
-  year: 2023
-  description: A wine cellar tracker — tasting notes, drink-by windows, and a "what should I open?" picker.
-  tags: [SwiftUI, CloudKit]
+- name: clockdown
+  year: 2026
+  description: "SPA for clean, modern, and social-first countdown timers. inspired by googling and looking for one and they all were AWFUL. clockdown removes the bloat, brushes a party vibe, and gives a clean countdown for your friends, family, and guests."
+  tags: [HTML, JS, GH Pages]
+  url: https://clockdown.us
 
-- name: PaceMaker
-  year: 2022
-  description: Marathon training plan generator that adapts mileage to your goal time and race date.
-  tags: [Python, React]
+- name: tidytick
+  year: 2026
+  description: "Web application to redefine the TODO list anchored around keeping someone with many spinning plates on top of the ball and letting them know what is overdue, not the world of what could get done."
+  tags: [node, grpc, serverless, vercel, postgres]
+  url: https://tidytick.com
 
-- name: Toast
-  year: 2021
-  description: A tiny menubar clipboard-history utility I built to scratch my own itch.
-  tags: [TypeScript, Electron]
+- name: calmkidstv
+  year: 2026
+  description: "A rotten tomatoes adjacent web tool that focuses on age appropriate children programming. because who knew modern day television is often actively harmful for development? 🤡"
+  tags: [node, grpc, serverless, vercel, postgres]
+  url: https://calmkidstv.com
