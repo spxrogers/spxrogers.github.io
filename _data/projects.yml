@@ -10,7 +10,7 @@
 
 - name: agentsync
   year: 2026
-  description: "CLI utility to define agentic harness (Claude Code, Codex, Cursor, and more!) skills, MCPs, memories, and configuration <strong>once</strong> and apply to all relevant-to-you tools."
+  description: "CLI utility to define agentic harness (Claude Code, Codex, Cursor, and more!) skills, MCPs, memories, and configuration <strong>once</strong> and apply to all of your tools."
   tags: [golang, cli, homebrew, ai]
   url: https://agentsync.cc
 
