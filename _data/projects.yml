@@ -1,0 +1,44 @@
+# Projects shown in the "builder" role on the homepage.
+# Order top-to-bottom = order shown.
+#
+# Fields:
+#   name        (required) project title
+#   year        (optional) shown top-right of the card
+#   description (required) one or two lines (inline HTML allowed, e.g. <strong>)
+#   tags        (optional) list of tech / keywords -> pills
+#   url         (optional) if present the card links out; external URLs open in a new tab
+
+- name: agentsync
+  year: 2026
+  description: "CLI utility to define agentic harness (Claude Code, Codex, Cursor, and more!) skills, MCPs, memories, and configuration <strong>once</strong> and apply to all of your tools."
+  tags: [golang, cli, homebrew, ai]
+  url: https://agentsync.cc
+
+- name: kitchen
+  year: 2026
+  description: "CLI interface to manage concurrent and background AI agent conversations at a conductor&lt;&gt;orchestra interaction. Specced and designed, but then <code>claude agents</code> released and the value proposition evaporated."
+  tags: [cli, ai]
+  url: https://github.com/spxrogers/kitchen
+
+- name: clockdown
+  year: 2026
+  description: "SPA for clean, modern, and social-first countdown timers. inspired by googling and looking for one and they all were AWFUL. clockdown removes the bloat, brushes a party vibe, and gives a clean countdown for your friends, family, and guests."
+  tags: [HTML, JS, GH Pages]
+  url: https://clockdown.us
+
+- name: tidytick
+  year: 2026
+  description: "Web application to redefine the TODO list anchored around keeping someone with many spinning plates on top of the ball and letting them know what is overdue, not the world of what could get done."
+  tags: [node, grpc, serverless, vercel, postgres]
+  url: https://tidytick.com
+
+- name: calmkidstv
+  year: 2026
+  description: "A rotten tomatoes adjacent web tool that focuses on age appropriate children programming. because who knew modern day television is often actively harmful for development? 🤡"
+  tags: [node, grpc, serverless, vercel, postgres]
+  url: https://calmkidstv.com
+
+- name: Swift OSS iOS Libraries
+  year: 2016
+  description: "<a href='https://github.com/spxrogers/Moya-Gloss' target='_blank' rel='noopener'>spxrogers/Moya-Gloss</a> and <a href='https://github.com/spxrogers/Alamofire-Gloss' target='_blank' rel='noopener'>spxrogers/Alamofire-Gloss</a> &mdash; two libraries adding serialization and deserialization bindings to strongly type your Swift async boundaries."
+  tags: [swift, iOS, reactive programming, alamofire]
