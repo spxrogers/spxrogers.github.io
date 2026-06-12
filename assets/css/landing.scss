@@ -378,6 +378,11 @@ a.project-card:hover {
   color: $text-secondary;
   margin: 0.4rem 0 0;
   line-height: 1.55;
+
+  strong {
+    color: $text-primary;
+    font-weight: 600;
+  }
 }
 
 .project-card__tags {
