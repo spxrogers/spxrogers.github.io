@@ -16,7 +16,7 @@
 
 - name: kitchen
   year: 2026
-  description: "CLI interface to manage concurrent and background AI agent conversations at a conductor&lt;&gt;orchestra interaction. Specced and designed, but then <code>claude agent</code> released and the value proposition evaporated."
+  description: "CLI interface to manage concurrent and background AI agent conversations at a conductor&lt;&gt;orchestra interaction. Specced and designed, but then <code>claude agents</code> released and the value proposition evaporated."
   tags: [cli, ai]
   url: https://github.com/spxrogers/kitchen
 
