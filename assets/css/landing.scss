@@ -383,6 +383,16 @@ a.project-card:hover {
     color: $text-primary;
     font-weight: 600;
   }
+
+  code {
+    font-family: $mono-stack;
+    font-size: 0.85em;
+    color: $accent;
+    background: $accent-light;
+    border: 1px solid rgba(58, 90, 140, 0.15);
+    border-radius: 4px;
+    padding: 0.05em 0.35em;
+  }
 }
 
 .project-card__tags {
