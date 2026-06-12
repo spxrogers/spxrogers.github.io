@@ -1,0 +1,32 @@
+# Projects shown in the "builder" role on the homepage.
+# Order top-to-bottom = order shown. Newest first reads best.
+#
+# Fields:
+#   name        (required) project title
+#   year        (optional) shown top-right of the card
+#   description (required) one or two lines
+#   tags        (optional) list of tech / keywords -> pills
+#   url         (optional) if present the card links out; external URLs open in a new tab
+#
+# TODO: these are placeholders from the prototype — replace with real projects.
+
+- name: spxrogers.com
+  year: 2024
+  description: This very site — a Jekyll build with a role-switching homepage, on GitHub Pages.
+  tags: [Jekyll, Sass]
+  url: https://github.com/spxrogers/spxrogers.github.io
+
+- name: Cellar
+  year: 2023
+  description: A wine cellar tracker — tasting notes, drink-by windows, and a "what should I open?" picker.
+  tags: [SwiftUI, CloudKit]
+
+- name: PaceMaker
+  year: 2022
+  description: Marathon training plan generator that adapts mileage to your goal time and race date.
+  tags: [Python, React]
+
+- name: Toast
+  year: 2021
+  description: A tiny menubar clipboard-history utility I built to scratch my own itch.
+  tags: [TypeScript, Electron]

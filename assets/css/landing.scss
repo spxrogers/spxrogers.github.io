@@ -11,6 +11,7 @@
 
 $font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 $serif-stack: 'Fraunces', Georgia, 'Times New Roman', serif;
+$mono-stack: 'SFMono-Regular', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 $text-primary: #1a1a2e;
 $text-secondary: #555;
 $text-muted: #888;
@@ -260,6 +261,143 @@ body {
   @include MQ(M) {
     font-size: 1rem;
   }
+}
+
+// --------------------------------
+// Builder project showcase
+// --------------------------------
+
+// The builder role drops the card chrome so the project cards
+// read as top-level elements (only one role view shows at a time).
+.subsection--showcase {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+
+  @include MQ(M) {
+    padding: 0;
+  }
+}
+
+.builder-lead {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: $text-secondary;
+  margin: 0 0 1.5rem;
+
+  strong {
+    color: $text-primary;
+    font-weight: 600;
+  }
+
+  @include MQ(M) {
+    font-size: 1rem;
+  }
+}
+
+.showcase-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $text-muted;
+  margin: 0 0 1.1rem;
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $border-light;
+  }
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+
+  @include MQ(M) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.project-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid $border-light;
+  border-radius: $radius;
+  background: $bg-card;
+  box-shadow: $shadow-sm;
+  padding: 1.15rem 1.2rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+a.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: $shadow-md;
+  border-color: $accent;
+}
+
+.project-card--static {
+  cursor: default;
+}
+
+.project-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.project-card__name {
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: $text-primary;
+}
+
+.project-card__arrow {
+  color: $accent;
+  font-weight: 600;
+}
+
+.project-card__year {
+  font-family: $mono-stack;
+  font-size: 0.72rem;
+  color: $text-muted;
+  white-space: nowrap;
+}
+
+.project-card__desc {
+  font-size: 0.86rem;
+  color: $text-secondary;
+  margin: 0.4rem 0 0;
+  line-height: 1.55;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  font-family: $mono-stack;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: $accent;
+  background: $accent-light;
+  border: 1px solid rgba(58, 90, 140, 0.15);
+  border-radius: 100px;
+  padding: 0.1rem 0.55rem;
+  line-height: 1.5;
 }
 
 // --------------------------------
