@@ -200,20 +200,59 @@
     var buttons = document.querySelectorAll('.role-btn');
     var sections = document.querySelectorAll('.subsection');
 
+    function selectRole(btn) {
+      buttons.forEach(function (b) { b.classList.remove('is-active'); });
+      sections.forEach(function (s) { s.classList.remove('is-visible'); });
+
+      btn.classList.add('is-active');
+      document.querySelector('[data-section="' + btn.getAttribute('data-role') + '"]').classList.add('is-visible');
+    }
+
+    function clearSelection() {
+      buttons.forEach(function (b) { b.classList.remove('is-active'); });
+      sections.forEach(function (s) { s.classList.remove('is-visible'); });
+    }
+
+    // Reflect the selected pill in the `t` query param for copy/paste deep links.
+    function updateQueryParam(role) {
+      if (!window.history || !window.history.replaceState) return;
+      var url = new URL(window.location.href);
+      if (role) {
+        url.searchParams.set('t', role);
+      } else {
+        url.searchParams.delete('t');
+      }
+      window.history.replaceState(null, '', url.toString());
+    }
+
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var role = btn.getAttribute('data-role');
         var wasActive = btn.classList.contains('is-active');
-
-        buttons.forEach(function (b) { b.classList.remove('is-active'); });
-        sections.forEach(function (s) { s.classList.remove('is-visible'); });
-
-        if (!wasActive) {
-          btn.classList.add('is-active');
-          document.querySelector('[data-section="' + role + '"]').classList.add('is-visible');
+        if (wasActive) {
+          clearSelection();
+          updateQueryParam(null);
+        } else {
+          selectRole(btn);
+          updateQueryParam(btn.getAttribute('data-role'));
         }
       });
     });
+
+    // Deep linking: on load, open the pill named in `?t=<pill_id>` (case insensitive).
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var target = params.get('t');
+      if (!target) return;
+      target = target.toLowerCase();
+      for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i].getAttribute('data-role').toLowerCase() === target) {
+          selectRole(buttons[i]);
+          // Normalize the param to the canonical pill id casing.
+          updateQueryParam(buttons[i].getAttribute('data-role'));
+          return;
+        }
+      }
+    })();
   })();
 
   (function () {
