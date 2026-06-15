@@ -11,8 +11,11 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-latest
     steps:
+      # Checkout must run on every event, including 'closed': the preview
+      # cleanup (rossjrw -> JamesIves) needs a git repo to commit the removal
+      # to. Gating it behind != 'closed' makes cleanup fail with "not in a git
+      # directory". Only the build steps below are skipped on close.
       - uses: actions/checkout@v4
-        if: github.event.action != 'closed'
 
       - uses: ruby/setup-ruby@v1
         if: github.event.action != 'closed'
