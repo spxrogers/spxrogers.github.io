@@ -1,32 +1,114 @@
-# Deploys a preview of the site for each pull request
-name: Deploy PR preview
+name: PR Preview
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, closed]
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 concurrency: preview-${{ github.ref }}
 
 jobs:
   deploy-preview:
+    if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        if: github.event.action != 'closed'
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - uses: ruby/setup-ruby@v1
-        if: github.event.action != 'closed'
         with:
           ruby-version: .ruby-version
           bundler-cache: true
 
       - uses: extractions/setup-just@v2
-        if: github.event.action != 'closed'
 
       - name: Build Jekyll site
-        if: github.event.action != 'closed'
-        run: just build --baseurl "/pr-preview/pr-${{ github.event.pull_request.number }}"
+        run: just build --baseurl "/pr/${{ github.event.pull_request.number }}"
 
-      - uses: rossjrw/pr-preview-action@v1
+      - name: Deploy to pr/ subdirectory on gh-pages
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages || true
+
+          # Stage the freshly built site (_site is gitignored, so it survives
+          # the branch switch, but stage it anyway to be safe)
+          rm -rf /tmp/pr-build
+          cp -r _site /tmp/pr-build
+
+          # Check out gh-pages branch (or create it)
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf .
+          fi
+
+          # Replace this PR's preview with the new build
+          rm -rf "pr/${PR_NUMBER}"
+          mkdir -p "pr/${PR_NUMBER}"
+          cp -r /tmp/pr-build/. "pr/${PR_NUMBER}/"
+
+          # Commit and push
+          git add "pr/${PR_NUMBER}"
+          git commit -m "Deploy preview for PR #${PR_NUMBER}" --allow-empty
+          git push origin gh-pages
+
+      - name: Comment preview URL
+        uses: actions/github-script@v7
         with:
-          source-dir: ./_site/
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const previewUrl = `https://spxrogers.com/pr/${prNumber}/`;
+            const body = `🔗 **Preview deployed:** ${previewUrl}`;
+
+            // Check for existing bot comment to update instead of spamming
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('Preview deployed:')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Remove PR preview
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ -d "pr/${PR_NUMBER}" ]; then
+            git rm -rf "pr/${PR_NUMBER}"
+            git commit -m "Remove preview for PR #${PR_NUMBER}"
+            git push origin gh-pages
+          fi
