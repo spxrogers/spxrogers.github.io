@@ -11,6 +11,9 @@ url: https://spxrogers.com
 
 harmony:
   name: Steven Rogers
+
+  # Contact email, used in the site footer (mailto link + copy-to-clipboard button).
+  email: contact@spxrogers.com
   # Used in <meta name="description"> and feed.xml site description.
   meta_description: >
    Steven Rogers - software engineer, family man, and collector of unlikely hobbies. Based in NYC.
