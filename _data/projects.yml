@@ -29,14 +29,24 @@
 - name: tidytick
   year: 2026
   description: "Web application to redefine the TODO list anchored around keeping someone with many spinning plates on top of the ball and letting them know what is overdue, not the world of what could get done."
-  tags: [node, grpc, serverless, vercel, postgres]
+  tags: [react, node, grpc, serverless, vercel, postgres]
   url: https://tidytick.com
 
 - name: calmkidstv
   year: 2026
   description: "A rotten tomatoes adjacent web tool that focuses on age appropriate children programming. because who knew modern day television is often actively harmful for development? 🤡"
-  tags: [node, grpc, serverless, vercel, postgres]
+  tags: [react, node, grpc, serverless, vercel, postgres]
   url: https://calmkidstv.com
+
+- name: spxTA
+  year: 2022
+  description: "A <a href='https://spxta.spxrogers.com/' target='_blank' rel='noopener'>REST API</a> wrapping the NYC MTA public gRPC API to create custom arrival profiles. This ultimately was consumed on an ESP32 microcontroller connected to a 1602 LCD display to create a personal MTA departure sign in my old UWS apartment so I could always leave for my commute at the most optimal time. My BC / 1 downtown train <a href='https://spxta.spxrogers.com/api/v1/clock/v1/spx01?pretty=1' target='_blank' rel='noopener'>profile JSON</a>."
+  tags: [react, nextjs, node, vercel, grpc]
+
+- name: ouracircle
+  year: 2022
+  description: "An <a href='https://ouracircle.com' target='_blank' rel='noopener'>SMS-based social circle network</a> for <a href='https://ouraring.com' target='_blank' rel='noopener'>Oura Ring</a> users. Create circles, share your daily scores, and create friendly competition around biometric health data. Project was sunset after Oura launched a first-party <a href='https://ouraring.com/blog/introducing-oura-circles' target='_blank' rel='noopener'>Circles feature</a> ... called exactly the same thing 🤣 the following summer."
+  tags: [react, nextjs, serverless, prisma, vercel, planetscale]
 
 - name: Swift OSS iOS Libraries
   year: 2016
