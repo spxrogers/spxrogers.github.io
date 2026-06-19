@@ -335,6 +335,7 @@ body {
   background: $bg-card;
   box-shadow: $shadow-sm;
   padding: 1.15rem 1.2rem;
+  min-width: 0;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
@@ -378,6 +379,8 @@ a.project-card:hover {
   color: $text-secondary;
   margin: 0.4rem 0 0;
   line-height: 1.55;
+  overflow-wrap: break-word;
+  word-break: break-word;
 
   strong {
     color: $text-primary;

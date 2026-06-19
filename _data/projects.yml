@@ -40,9 +40,8 @@
 
 - name: spxTA
   year: 2022
-  description: "A REST API wrapping the NYC MTA public gRPC API to create custom arrival profiles. This ultimately was consumed on an ESP32 microcontroller connected to a 1602 LCD display to create a personal MTA departure sign in my old UWS apartment so I could always leave for my commute at the most optimal time. My BC / 1 downtown train profile: https://spxta.spxrogers.com/api/v1/clock/v1/spx01?pretty=1"
+  description: "A <a href='https://spxta.spxrogers.com/' target='_blank' rel='noopener'>REST API</a> wrapping the NYC MTA public gRPC API to create custom arrival profiles. This ultimately was consumed on an ESP32 microcontroller connected to a 1602 LCD display to create a personal MTA departure sign in my old UWS apartment so I could always leave for my commute at the most optimal time. My BC / 1 downtown train <a href='https://spxta.spxrogers.com/api/v1/clock/v1/spx01?pretty=1' target='_blank' rel='noopener'>profile JSON</a>."
   tags: [react, nextjs, node, vercel, grpc]
-  url: https://spxta.spxrogers.com/
 
 - name: ouracircle
   year: 2022
