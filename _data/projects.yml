@@ -26,6 +26,12 @@
   tags: [HTML, JS, GH Pages]
   url: https://clockdown.us
 
+- name: oura-toolkit
+  year: 2026
+  description: "Your Oura Ring data, everywhere you work: a fast Rust CLI (oura), a local MCP server for AI assistants, a Claude plugin with wellness skills, and generated SDK clients. Data stays local, always privacy first."
+  tags: [rust, cli, homebrew, ai, mcp, plugin, npm]
+  url: https://ouratoolkit.com
+
 - name: tidytick
   year: 2026
   description: "Web application to redefine the TODO list anchored around keeping someone with many spinning plates on top of the ball and letting them know what is overdue, not the world of what could get done."
