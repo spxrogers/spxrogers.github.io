@@ -28,7 +28,7 @@
 
 - name: oura-toolkit
   year: 2026
-  description: "Your Oura Ring data, everywhere you work: a fast Rust CLI (oura), a local MCP server for AI assistants, a Claude plugin with wellness skills, and generated SDK clients. Data stays local, always privacy first."
+  description: "Your Oura Ring data, everywhere you work: a fast Rust CLI (<code>oura</code>), a local MCP server for AI assistants, a Claude plugin with wellness skills, and generated SDK clients. Data stays local, always privacy first."
   tags: [oura, rust, cli, homebrew, ai, mcp, plugin, npm]
   url: https://ouratoolkit.com
 
