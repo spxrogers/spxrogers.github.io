@@ -17,7 +17,15 @@
     {% endif %}
   {% endcapture %}
   {% if project.url %}
-  <a class="project-card" href="{{ project.url }}"{% if project.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ card_inner }}</a>
+  {% assign project_href = project.url %}
+  {% if project.url contains '://' %}
+    {% if project.url contains '?' %}
+      {% assign project_href = project.url | append: '&utm_source=spxrogers.com&utm_medium=referral&utm_campaign=builder-projects' %}
+    {% else %}
+      {% assign project_href = project.url | append: '?utm_source=spxrogers.com&utm_medium=referral&utm_campaign=builder-projects' %}
+    {% endif %}
+  {% endif %}
+  <a class="project-card" href="{{ project_href }}"{% if project.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ card_inner }}</a>
   {% else %}
   <div class="project-card project-card--static">{{ card_inner }}</div>
   {% endif %}
